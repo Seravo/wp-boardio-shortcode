@@ -30,7 +30,7 @@ class Boardio_Shortcode {
   public static function shortcode_handler( $atts ) {
     $atts = shortcode_atts( array(
       'partner' => 0,
-      'widget' => 0,
+      'widget' => 'boardioWidget',
     ), $atts, 'boardio' );
 
     return self::$instance->render(
@@ -50,7 +50,7 @@ class Boardio_Shortcode {
   <div id="boardioWidget"></div>
   <script>// <![CDATA[
     var boardioPartnerID = <?php echo intval($options['partnerID']); ?>;
-    var boardioWidgetID = 'boardioWidget';
+    var boardioWidgetID = '<?php echo $options['widgetID']; ?>';
     (function (window, document) {
       var loader = function () {
 
